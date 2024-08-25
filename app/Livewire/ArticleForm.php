@@ -25,9 +25,7 @@ class ArticleForm extends Component implements HasForms
         return $form
             ->schema([
                 TextInput::make('title')->required(),
-                TextInput::make('karol')->required(),
-                MarkdownEditor::make('content3'),
-                TextInput::make('karol2')->required()
+                MarkdownEditor::make('body'),
             ])
             ->statePath('data');
     }
