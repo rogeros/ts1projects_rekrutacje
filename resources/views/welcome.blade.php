@@ -31,9 +31,13 @@
 
         @auth()
             <div>
+                You are logged in as <b>{{ auth()->user()->name }}</b>
+
+                <a href="{{ route('article.create') }}" class="block w-36 pt-3 px-4 py-2 text-sm font-medium text-white bg-green-600 border border-gray-300 leading-5 rounded-md hover:text-yellow-200 focus:outline-none focus:ring-blue focus:border-blue-300 active:bg-green-800 active:text-gray-200 transition ease-in-out duration-150">Add new article</a>
+
                 <div class="sm:mx-auto sm:w-full">
-                    <h2 class="mt-12 text-3xl font-extrabold text-center text-gray-900 leading-9">
-                        Yupiiiii
+                    <h2 class="mt-12 text-center text-gray-900 leading-9">
+                        @livewire('articles-list')
                     </h2>
                 </div>
             </div>

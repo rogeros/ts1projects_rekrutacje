@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fi-ta-cell {
+    font-weight: 300 !important;
+}
