@@ -43,6 +43,14 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    public function edit(Request $request, string $id)
+    {
+        return view('article.edit', ['article' => Article::findOrFail($id)]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, string $id)
     {
         //

@@ -7,7 +7,7 @@
 
         @auth()
             <div class="w-3/4 mx-auto">
-                @livewire('article-form')
+                @livewire('article-form', ['article' => $article->id] )
             </div>
         @endauth
 

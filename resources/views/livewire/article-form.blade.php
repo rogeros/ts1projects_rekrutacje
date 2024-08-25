@@ -1,4 +1,4 @@
-<div>
+<div class="w-full">
     <form wire:submit="create">
         {{ $this->form }}
 
