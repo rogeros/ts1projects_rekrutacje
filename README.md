@@ -6,14 +6,26 @@ Download project
 - git clone 'https://github.com/rogeros/ts1projects_rekrutacje.git'
 - cd ts1projects_rekrutacje
 
+
+Installing Composer Dependencies
+- docker run --rm \
+  -u "$(id -u):$(id -g)" \
+  -v "$(pwd):/var/www/html" \
+  -w /var/www/html \
+  laravelsail/php83-composer:latest \
+  composer install --ignore-platform-reqs
+
 Download and run docker containers (it may take a few moments)
 - ./vendor/bin/sail up -d
+
 
 After starting the docker container, we migrate the database and install the required components
 - /bin/bash start.sh
 
+
 And then we open url in web browser
 - http://127.0.0.1/
+
 
 Thank you
 
