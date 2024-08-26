@@ -13,7 +13,6 @@ use Filament\Tables\Table;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Actions\Action;
 
 class ArticlesList extends Component implements HasForms, HasTable
 {
@@ -26,7 +25,8 @@ class ArticlesList extends Component implements HasForms, HasTable
             ->query(Article::query())
             ->columns([
                 TextColumn::make('title')
-                    ->label('Article title'),
+                    ->label('Article title')
+                    ->searchable(),
 
                 TextColumn::make('publication_date')
                     ->label('Publication date')
@@ -39,7 +39,10 @@ class ArticlesList extends Component implements HasForms, HasTable
                     ->label('')
                     ->view('tables.columns.article-action-column')
 
-            ])->defaultSort('publication_date', 'desc');
+            ])
+            ->defaultSort('publication_date', 'desc')
+            ->searchable()
+            ->filters([]);
 
     }
     public function render()
