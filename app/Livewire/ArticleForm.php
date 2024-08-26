@@ -57,7 +57,7 @@ class ArticleForm extends Component implements HasForms
             $arcitle = Article::findOrFail($formData['id']);
 
             if($arcitle->user_id != auth()->user()->id){
-                abort(401);
+                abort(403);
             }
 
             $arcitle->title = $formData['title'];

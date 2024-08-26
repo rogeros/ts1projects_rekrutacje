@@ -12,7 +12,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        return redirect()->route('home');
     }
 
     /**
@@ -40,7 +40,7 @@ class ArticleController extends Controller
         $article->user_id = auth()->id();
         $article->save();
 
-       return redirect()->route('welcome')->with('status', 'Yupi. Your article has been added.');
+       return redirect()->route('home')->with('status', 'Yupi. Your article has been added.');
     }
 
     /**
