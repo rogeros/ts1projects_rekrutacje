@@ -6,15 +6,19 @@
         @livewire('auth.menu')
 
         @auth()
-            <div>
-                You are logged in as <b>{{ auth()->user()->name }}</b>
-
+            <div class="w-2/3">
                 <a href="{{ route('article.create') }}" class="block w-36 pt-3 px-4 py-2 text-sm font-medium text-white bg-green-600 border border-gray-300 leading-5 rounded-md hover:text-yellow-200 focus:outline-none focus:ring-blue focus:border-blue-300 active:bg-green-800 active:text-gray-200 transition ease-in-out duration-150">Add new article</a>
 
                 <div class="sm:mx-auto sm:w-full">
-                    <h2 class="mt-12 text-center text-gray-900 leading-9">
+                    @if (session('status'))
+                        <div class="bg-green-500 text-white p-4 rounded-md border border-green-600">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <div class="mt-12 text-center text-gray-900 leading-9">
                         @livewire('articles-list')
-                    </h2>
+                    </div>
                 </div>
             </div>
         @elseguest

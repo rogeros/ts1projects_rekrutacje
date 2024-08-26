@@ -6,7 +6,7 @@
         @livewire('auth.menu')
 
         @auth()
-            <div class="w-3/4 mx-auto">
+            <div class="w-2/3 mx-auto">
                 @livewire('article-form')
             </div>
         @endauth

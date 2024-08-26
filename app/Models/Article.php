@@ -12,6 +12,8 @@ class Article extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['user_id', 'title', 'body'];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

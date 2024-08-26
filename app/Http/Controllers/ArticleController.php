@@ -29,7 +29,18 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:100',
+            'body' => 'required|max:3000',
+        ]);
+
+        $article = new Article();
+        $article->title = $validatedData['title'];
+        $article->body = $validatedData['body'];
+        $article->user_id = auth()->id();
+        $article->save();
+
+       return redirect()->route('welcome')->with('status', 'Yupi. Your article has been added.');
     }
 
     /**
@@ -43,7 +54,7 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function edit(Request $request, string $id)
+    public function edit(string $id)
     {
         return view('article.edit', ['article' => Article::findOrFail($id)]);
     }
@@ -53,7 +64,17 @@ class ArticleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:100',
+            'body' => 'required|max:3000',
+        ]);
+
+        $arcitle = Article::findOrFail($id);
+        $arcitle->title = $validatedData['title'];
+        $arcitle->body = $validatedData['body'];
+        $arcitle->save();
+
+        return redirect()->route('home')->with('status', 'Your article has been successfully updated.');
     }
 
     /**
@@ -61,6 +82,8 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $arcitle = Article::findOrFail($id);
+        $arcitle->delete();
+        return redirect()->route('home')->with('status', 'Your article has been deleted.');
     }
 }
